@@ -65,7 +65,7 @@
      
     <div class="article-meta">
       <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
-  <time datetime="2023-09-08T14:53:19.979Z" itemprop="datePublished">2023-09-08</time>
+  <time datetime="2023-09-08T14:58:43.576Z" itemprop="datePublished">2023-09-08</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
@@ -110,8 +110,7 @@
 </li>
 <li>安装mmdb</li>
 </ol>
-<p>请执行以下命令下载文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//请执行以下命令下载文件</span><br><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li><p>下载静态页面 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/haishanh/yacd/archive/gh-pages.zip</span><br><span class="line">unzip gh-pages.zip</span><br><span class="line">rm -rf gh-pages.zip</span><br><span class="line">mv yacd-gh-pages/ clash-dashboard/</span><br></pre></td></tr></table></figure></li>
@@ -139,23 +138,35 @@
 </ol>
 <p>服务器配置安全组 7890和7891将其放行</p>
 <ol start="9">
-<li>运行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard</span><br></pre></td></tr></table></figure>
-注：clash-linux-amd64-v1.11.12     是你的二进制文件名<br>注：&#x2F;mnt&#x2F;clash                     是文件夹路径<br>注：&#x2F;mnt&#x2F;clash&#x2F;config.yaml         是配置文件<br>注：&#x2F;mnt&#x2F;clash&#x2F;clash-dashboard     是静态资源路径</li>
-<li>后台运行，上一步没问题再执行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard &amp;</span><br></pre></td></tr></table></figure>
-注：执行之后将会出现数字，就是成功</li>
-<li>访问页面</li>
-</ol>
+<li><p>运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard</span><br></pre></td></tr></table></figure>
+<p>注：clash-linux-amd64-v1.11.12     是你的二进制文件名<br>注：&#x2F;mnt&#x2F;clash                     是文件夹路径<br>注：&#x2F;mnt&#x2F;clash&#x2F;config.yaml         是配置文件<br>注：&#x2F;mnt&#x2F;clash&#x2F;clash-dashboard     是静态资源路径</p>
+</li>
+<li><p>后台运行，上一步没问题再执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard &amp;</span><br></pre></td></tr></table></figure>
+<p>注：执行之后将会出现数字，就是成功</p>
+</li>
+<li><p>访问页面</p>
 <p>浏览器运行<br>服务器ip地址:7891&#x2F;ui   </p>
-<ol start="12">
-<li>配置环境，使代理生效-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=127.0.0.1:7890</span><br><span class="line">export http_proxys=127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li>
-<li>可以通过echo  $http_proxy来查看是否启用了临时代理<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $http_proxy</span><br></pre></td></tr></table></figure>
-成功：127.0.0.1:7890 出现这一段地址<br>访问你的页面，查看日志是否正常</li>
-<li>测试代理是否正常<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
-成功:将会出现一堆东西，如果失败那么就检查配置是否错误</li>
-<li>查看运行日志<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f nohup.out</span><br></pre></td></tr></table></figure>
-成功示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 自动选择&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider &quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 故障转移&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:57:38+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br></pre></td></tr></table></figure></li>
-<li>关闭运行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep clash</span><br></pre></td></tr></table></figure>
-会出现两串信息  找到最前面几个数字<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -9 找到的数字   </span><br></pre></td></tr></table></figure></li>
+</li>
+<li><p>配置环境，使代理生效-</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=127.0.0.1:7890</span><br><span class="line">export http_proxys=127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p>可以通过echo  $http_proxy来查看是否启用了临时代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $http_proxy</span><br></pre></td></tr></table></figure>
+<p>成功：127.0.0.1:7890 出现这一段地址<br>访问你的页面，查看日志是否正常</p>
+</li>
+<li><p>测试代理是否正常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
+<p>成功:将会出现一堆东西，如果失败那么就检查配置是否错误</p>
+</li>
+<li><p>查看运行日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f nohup.out</span><br></pre></td></tr></table></figure>
+<p>成功示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 自动选择&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider &quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 故障转移&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:57:38+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep clash</span><br></pre></td></tr></table></figure>
+<p>会出现两串信息  找到最前面几个数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -9 找到的数字   </span><br></pre></td></tr></table></figure></li>
 </ol>
  
       <!-- reward -->
