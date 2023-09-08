@@ -65,7 +65,7 @@
      
     <div class="article-meta">
       <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
-  <time datetime="2023-09-08T14:58:43.576Z" itemprop="datePublished">2023-09-08</time>
+  <time datetime="2023-09-08T15:00:56.985Z" itemprop="datePublished">2023-09-08</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
@@ -98,20 +98,24 @@
        
   <h3 id="国内linux部署clash-你懂得"><a href="#国内linux部署clash-你懂得" class="headerlink" title="国内linux部署clash(你懂得)"></a>国内linux部署clash(你懂得)</h3><p>本人是centos服务器,其他服务器同理<br>原文链接<a target="_blank" rel="noopener" href="https://liuxianyu.cn/article/linux-clash.html">Cent OS 安装使用 clash | 刘先玉</a></p>
 <ol>
-<li>创建目录<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt &amp;&amp; mkdir clash</span><br></pre></td></tr></table></figure>
- 注：将会创建&#x2F;mnt目录 并创建clash文件夹</li>
-<li>下载 clash 并解压<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz</span><br></pre></td></tr></table></figure>
+<li><p>创建目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt &amp;&amp; mkdir clash</span><br></pre></td></tr></table></figure>
+<p> 注：将会创建&#x2F;mnt目录 并创建clash文件夹</p>
+</li>
+<li><p>下载 clash 并解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d clash-linux-amd64-v1.11.12.gz</span><br><span class="line">mv clash-linux-amd64-v1.11.12 clash</span><br></pre></td></tr></table></figure>
-最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz</li>
-<li>下载配置文件<br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o config.yaml &quot;/mnt/config.yaml&quot;</span><br></pre></td></tr></table></figure>
-注：配置名称为config.yaml<ul>
+<p>最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz</p>
+</li>
+<li><p>下载配置文件<br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o config.yaml &quot;/mnt/config.yaml&quot;</span><br></pre></td></tr></table></figure>
+<p>注：配置名称为config.yaml</p>
+<ul>
 <li>config.yaml里面基础内容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: clash-dashboard # 静态页面文件夹</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>安装mmdb</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//请执行以下命令下载文件</span><br><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
-<ol start="5">
+<li><p>安装mmdb</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//请执行以下命令下载文件</span><br><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure></li>
 <li><p>下载静态页面 </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/haishanh/yacd/archive/gh-pages.zip</span><br><span class="line">unzip gh-pages.zip</span><br><span class="line">rm -rf gh-pages.zip</span><br><span class="line">mv yacd-gh-pages/ clash-dashboard/</span><br></pre></td></tr></table></figure></li>
 <li><p>授予文件夹权限</p>
@@ -146,8 +150,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard &amp;</span><br></pre></td></tr></table></figure>
 <p>注：执行之后将会出现数字，就是成功</p>
 </li>
-<li><p>访问页面</p>
-<p>浏览器运行<br>服务器ip地址:7891&#x2F;ui   </p>
+<li><p>访问页面<br>浏览器运行<br>服务器ip地址:7891&#x2F;ui   </p>
 </li>
 <li><p>配置环境，使代理生效-</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=127.0.0.1:7890</span><br><span class="line">export http_proxys=127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li>
