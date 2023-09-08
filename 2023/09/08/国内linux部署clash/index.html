@@ -65,7 +65,7 @@
      
     <div class="article-meta">
       <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
-  <time datetime="2023-09-08T15:12:52.370Z" itemprop="datePublished">2023-09-08</time>
+  <time datetime="2023-09-08T15:15:17.432Z" itemprop="datePublished">2023-09-08</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
@@ -99,16 +99,19 @@
   <h3 id="国内linux部署clash-你懂得"><a href="#国内linux部署clash-你懂得" class="headerlink" title="国内linux部署clash(你懂得)"></a>国内linux部署clash(你懂得)</h3><p>本人是centos服务器,其他服务器同理<br>原文链接<a target="_blank" rel="noopener" href="https://liuxianyu.cn/article/linux-clash.html">Cent OS 安装使用 clash | 刘先玉</a></p>
 <p><strong>1.创建目录</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt &amp;&amp; mkdir clash</span><br></pre></td></tr></table></figure>
-<p> 注：将会创建&#x2F;mnt目录 并创建clash文件夹<br><strong>2.下载 clash 并解压</strong></p>
+<p> 注：将会创建&#x2F;mnt目录 并创建clash文件夹</p>
+<p><strong>2.下载 clash 并解压</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d clash-linux-amd64-v1.11.12.gz</span><br><span class="line">mv clash-linux-amd64-v1.11.12 clash</span><br></pre></td></tr></table></figure>
-<p>最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz<br><strong>3.下载配置文件</strong><br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件</p>
+<p>最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz</p>
+<p><strong>3.下载配置文件</strong><br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o config.yaml &quot;/mnt/config.yaml&quot;</span><br></pre></td></tr></table></figure>
 <p>注：配置名称为config.yaml<br>       config.yaml里面基础内容<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: clash-dashboard # 静态页面文件夹</span><br></pre></td></tr></table></figure><br><strong>4.安装mmdb</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//请执行以下命令下载文件</span><br><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
-<p>**5.下载静态页面 **</p>
+<p><strong>5.下载静态页面</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/haishanh/yacd/archive/gh-pages.zip</span><br><span class="line">unzip gh-pages.zip</span><br><span class="line">rm -rf gh-pages.zip</span><br><span class="line">mv yacd-gh-pages/ clash-dashboard/</span><br></pre></td></tr></table></figure>
-<p><strong>6.授予文件夹权限</strong><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /mnt/clash</span><br></pre></td></tr></table></figure><br> 注：&#x2F;mnt&#x2F;clash 为文件夹目录<br><strong>7.再次配置config.yaml</strong><br>1.使用命令编辑&#x2F;mnt&#x2F;clash下的config,yaml配置文件<br>2.具体配置如下</p>
+<p><strong>6.授予文件夹权限</strong><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /mnt/clash</span><br></pre></td></tr></table></figure><br> 注：&#x2F;mnt&#x2F;clash 为文件夹目录</p>
+<p><strong>7.再次配置config.yaml</strong><br>1.使用命令编辑&#x2F;mnt&#x2F;clash下的config,yaml配置文件<br>2.具体配置如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: /mnt/clash/clash-dashboard # 静态页面文件夹</span><br><span class="line">接下来配置不方便展示</span><br></pre></td></tr></table></figure>
 <p>3.不方便展示那一部分</p>
 <ul>
@@ -131,10 +134,9 @@
 <p><strong>13.可以通过echo  $http_proxy来查看是否启用了临时代理</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $http_proxy</span><br></pre></td></tr></table></figure>
 <p>成功：127.0.0.1:7890 出现这一段地址<br>访问你的页面，查看日志是否正常</p>
-<ol>
-<li>测试代理是否正常<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
-成功:将会出现一堆东西，如果失败那么就检查配置是否错误</li>
-</ol>
+<p>1.测试代理是否正常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
+<p>成功:将会出现一堆东西，如果失败那么就检查配置是否错误</p>
 <p><strong>14.查看运行日志</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f nohup.out</span><br></pre></td></tr></table></figure>
 <p>成功示例：</p>
