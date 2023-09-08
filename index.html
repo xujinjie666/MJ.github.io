@@ -178,7 +178,7 @@
     
     
     <article
-  id="post-clond虚拟环境配置"
+  id="post-国内linux部署clash"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -187,28 +187,74 @@
   <div class="article-inner">
      
     <div class="article-meta">
-      <a href="/2023/09/08/clond%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2023-09-08T14:50:14.171Z" itemprop="datePublished">2023-09-08</time>
+      <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
+  <time datetime="2023-09-08T14:53:19.979Z" itemprop="datePublished">2023-09-08</time>
 </a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>1. 打开终端或命令提示符，输入以下命令创建一个新的conda虚拟环境。在命令中，将 my_env 替换为您所希望使用的环境名称。  </p>
-<p>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   conda create -n my_env  </span><br><span class="line">   ```  </span><br><span class="line">  </span><br><span class="line">2. 如果您想要为新环境指定Python版本，可以使用以下命令：  </span><br><span class="line">  </span><br><span class="line">   ```  </span><br><span class="line">   conda create -n my_env python=3.9  </span><br><span class="line">   ```  </span><br><span class="line">  </span><br><span class="line">   这将创建一个名为“my_env”的环境，并使用Python 3.9版本。</span><br><span class="line">   </span><br><span class="line">3.您可以使用以下命令激活conda虚拟环境：  </span><br><span class="line">  </span><br><span class="line">在Windows操作系统上：  </span><br><span class="line">  </span><br><span class="line">```  </span><br><span class="line">activate my_env  </span><br></pre></td></tr></table></figure></p>
-<p>您可以使用以下命令列出所有已创建的conda环境：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list  </span><br></pre></td></tr></table></figure>
-<p>您可以通过以下命令删除已经创建的 conda 环境：  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;环境名&gt; --all  </span><br><span class="line"></span><br><span class="line">conda remove --name wechat-gpt --all  </span><br></pre></td></tr></table></figure>
-<p>个人微信安装虚拟环境</p>
-<p>安装核心依赖 (必选)<br>能够使用<code>itchat</code>创建机器人，并具有文字交流功能所需的最小依赖集合。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<p>拓展依赖 (可选，建议安装)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -r requirements-optional.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-本地运行"><a href="#1-本地运行" class="headerlink" title="1.本地运行"></a>1.本地运行</h3><p>如果是开发机 <strong>本地运行</strong>，直接在项目根目录下执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python app.py</span><br></pre></td></tr></table></figure>
+  <h3 id="国内linux部署clash-你懂得"><a href="#国内linux部署clash-你懂得" class="headerlink" title="国内linux部署clash(你懂得)"></a>国内linux部署clash(你懂得)</h3><p>本人是centos服务器,其他服务器同理<br>原文链接<a target="_blank" rel="noopener" href="https://liuxianyu.cn/article/linux-clash.html">Cent OS 安装使用 clash | 刘先玉</a></p>
+<ol>
+<li>创建目录<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt &amp;&amp; mkdir clash</span><br></pre></td></tr></table></figure>
+ 注：将会创建&#x2F;mnt目录 并创建clash文件夹</li>
+<li>下载 clash 并解压<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d clash-linux-amd64-v1.11.12.gz</span><br><span class="line">mv clash-linux-amd64-v1.11.12 clash</span><br></pre></td></tr></table></figure>
+最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz</li>
+<li>下载配置文件<br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o config.yaml &quot;/mnt/config.yaml&quot;</span><br></pre></td></tr></table></figure>
+注：配置名称为config.yaml<ul>
+<li>config.yaml里面基础内容<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: clash-dashboard # 静态页面文件夹</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>安装mmdb</li>
+</ol>
+<p>请执行以下命令下载文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>下载静态页面 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/haishanh/yacd/archive/gh-pages.zip</span><br><span class="line">unzip gh-pages.zip</span><br><span class="line">rm -rf gh-pages.zip</span><br><span class="line">mv yacd-gh-pages/ clash-dashboard/</span><br></pre></td></tr></table></figure></li>
+<li><p>授予文件夹权限</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /mnt/clash</span><br></pre></td></tr></table></figure>
+<p> 注：&#x2F;mnt&#x2F;clash 为文件夹目录</p>
+</li>
+<li><p>再次配置config.yaml</p>
+</li>
+<li><p>使用命令编辑&#x2F;mnt&#x2F;clash下的config,yaml配置文件</p>
+</li>
+<li><p>具体配置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: /mnt/clash/clash-dashboard # 静态页面文件夹</span><br><span class="line">接下来配置不方便展示</span><br></pre></td></tr></table></figure></li>
+<li><p>不方便展示那一部分</p>
+<ul>
+<li>第一步打开你的本地clash</li>
+<li>第二步点击左侧配置</li>
+<li>右键你的订阅点击编辑</li>
+<li>找到dns: 那一段往下一直复制到底然后粘贴到上面配置文件中</li>
+<li>示例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> dns:</span><br><span class="line">    enable: true</span><br><span class="line">    listen: &#x27;127.0.0.1:35353&#x27;</span><br><span class="line">    default-nameserver: </span><br><span class="line">    enhanced-mode: fake-ip</span><br><span class="line">    fake-ip-range: </span><br><span class="line">    fake-ip-filter: </span><br><span class="line">    nameserver: </span><br><span class="line">    fallback:</span><br><span class="line">    fallback-filter: </span><br><span class="line">proxies:  </span><br><span class="line">等。。一直到文件结尾</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>开放防火墙端口</p>
+</li>
+</ol>
+<p>服务器配置安全组 7890和7891将其放行</p>
+<ol start="9">
+<li>运行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard</span><br></pre></td></tr></table></figure>
+注：clash-linux-amd64-v1.11.12     是你的二进制文件名<br>注：&#x2F;mnt&#x2F;clash                     是文件夹路径<br>注：&#x2F;mnt&#x2F;clash&#x2F;config.yaml         是配置文件<br>注：&#x2F;mnt&#x2F;clash&#x2F;clash-dashboard     是静态资源路径</li>
+<li>后台运行，上一步没问题再执行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard &amp;</span><br></pre></td></tr></table></figure>
+注：执行之后将会出现数字，就是成功</li>
+<li>访问页面</li>
+</ol>
+<p>浏览器运行<br>服务器ip地址:7891&#x2F;ui   </p>
+<ol start="12">
+<li>配置环境，使代理生效-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=127.0.0.1:7890</span><br><span class="line">export http_proxys=127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<li>可以通过echo  $http_proxy来查看是否启用了临时代理<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $http_proxy</span><br></pre></td></tr></table></figure>
+成功：127.0.0.1:7890 出现这一段地址<br>访问你的页面，查看日志是否正常</li>
+<li>测试代理是否正常<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
+成功:将会出现一堆东西，如果失败那么就检查配置是否错误</li>
+<li>查看运行日志<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f nohup.out</span><br></pre></td></tr></table></figure>
+成功示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 自动选择&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider &quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 故障转移&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:57:38+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br></pre></td></tr></table></figure></li>
+<li>关闭运行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep clash</span><br></pre></td></tr></table></figure>
+会出现两串信息  找到最前面几个数字<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -9 找到的数字   </span><br></pre></td></tr></table></figure></li>
+</ol>
  
       <!-- reward -->
       
