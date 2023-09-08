@@ -188,7 +188,7 @@
      
     <div class="article-meta">
       <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
-  <time datetime="2023-09-08T15:11:42.992Z" itemprop="datePublished">2023-09-08</time>
+  <time datetime="2023-09-08T15:12:52.370Z" itemprop="datePublished">2023-09-08</time>
 </a>    
     </div>
       
@@ -216,7 +216,7 @@
 <li>找到dns: 那一段往下一直复制到底然后粘贴到上面配置文件中</li>
 <li>示例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> dns:</span><br><span class="line">    enable: true</span><br><span class="line">    listen: &#x27;127.0.0.1:35353&#x27;</span><br><span class="line">    default-nameserver: </span><br><span class="line">    enhanced-mode: fake-ip</span><br><span class="line">    fake-ip-range: </span><br><span class="line">    fake-ip-filter: </span><br><span class="line">    nameserver: </span><br><span class="line">    fallback:</span><br><span class="line">    fallback-filter: </span><br><span class="line">proxies:  </span><br><span class="line">等。。一直到文件结尾</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>**8.开放防火墙端口 **<br>服务器配置安全组 7890和7891将其放行</p>
+<p><strong>8.开放防火墙端口</strong><br>服务器配置安全组 7890和7891将其放行</p>
 <p><strong>9.运行</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard</span><br></pre></td></tr></table></figure>
 <p>注：clash-linux-amd64-v1.11.12     是你的二进制文件名<br>注：&#x2F;mnt&#x2F;clash                     是文件夹路径<br>注：&#x2F;mnt&#x2F;clash&#x2F;config.yaml         是配置文件<br>注：&#x2F;mnt&#x2F;clash&#x2F;clash-dashboard     是静态资源路径</p>
