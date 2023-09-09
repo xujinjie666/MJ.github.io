@@ -55,7 +55,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-国内linux部署clash"
+  id="post-Github 上的 markdown 文件怎么上传并显示图片？"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,15 +64,15 @@
   <div class="article-inner">
      
     <div class="article-meta">
-      <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-date">
-  <time datetime="2023-09-08T15:15:17.432Z" itemprop="datePublished">2023-09-08</time>
+      <a href="/2023/09/09/Github%20%E4%B8%8A%E7%9A%84%20markdown%20%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E4%B8%8A%E4%BC%A0%E5%B9%B6%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%EF%BC%9F/" class="article-date">
+  <time datetime="2023-09-09T04:00:15.248Z" itemprop="datePublished">2023-09-09</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1k</span>
+            <span class="post-count">291</span>
         </span>
     </span>
 
@@ -81,7 +81,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
@@ -96,55 +96,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="国内linux部署clash-你懂得"><a href="#国内linux部署clash-你懂得" class="headerlink" title="国内linux部署clash(你懂得)"></a>国内linux部署clash(你懂得)</h3><p>本人是centos服务器,其他服务器同理<br>原文链接<a target="_blank" rel="noopener" href="https://liuxianyu.cn/article/linux-clash.html">Cent OS 安装使用 clash | 刘先玉</a></p>
-<p><strong>1.创建目录</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt &amp;&amp; mkdir clash</span><br></pre></td></tr></table></figure>
-<p> 注：将会创建&#x2F;mnt目录 并创建clash文件夹</p>
-<p><strong>2.下载 clash 并解压</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -d clash-linux-amd64-v1.11.12.gz</span><br><span class="line">mv clash-linux-amd64-v1.11.12 clash</span><br></pre></td></tr></table></figure>
-<p>最新版本可在 <a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash">https://github.com/Dreamacro/clash</a><br>查看当前示例clash-linux-amd64-v1.11.12.gz</p>
-<p><strong>3.下载配置文件</strong><br>在 clash 二进制文件的目录下执行以下命令下载你的 clash 配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -o config.yaml &quot;/mnt/config.yaml&quot;</span><br></pre></td></tr></table></figure>
-<p>注：配置名称为config.yaml<br>       config.yaml里面基础内容<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: clash-dashboard # 静态页面文件夹</span><br></pre></td></tr></table></figure><br><strong>4.安装mmdb</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//请执行以下命令下载文件</span><br><span class="line">wget &quot;https://raw.githubusercontent.com/wp-statistics/GeoLite2-Country/master/GeoLite2-Country.mmdb.gz&quot;</span><br><span class="line">gzip -d GeoLite2-Country.mmdb.gz</span><br><span class="line">mv GeoLite2-Country.mmdb Country.mmdb</span><br></pre></td></tr></table></figure>
-<p><strong>5.下载静态页面</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/haishanh/yacd/archive/gh-pages.zip</span><br><span class="line">unzip gh-pages.zip</span><br><span class="line">rm -rf gh-pages.zip</span><br><span class="line">mv yacd-gh-pages/ clash-dashboard/</span><br></pre></td></tr></table></figure>
-<p><strong>6.授予文件夹权限</strong><br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /mnt/clash</span><br></pre></td></tr></table></figure><br> 注：&#x2F;mnt&#x2F;clash 为文件夹目录</p>
-<p><strong>7.再次配置config.yaml</strong><br>1.使用命令编辑&#x2F;mnt&#x2F;clash下的config,yaml配置文件<br>2.具体配置如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">secret: &#x27;&#x27; # 访问密码</span><br><span class="line">external-controller: 0.0.0.0:7891 # 静态页面地址</span><br><span class="line">external-ui: /mnt/clash/clash-dashboard # 静态页面文件夹</span><br><span class="line">接下来配置不方便展示</span><br></pre></td></tr></table></figure>
-<p>3.不方便展示那一部分</p>
-<ul>
-<li>第一步打开你的本地clash</li>
-<li>第二步点击左侧配置</li>
-<li>右键你的订阅点击编辑</li>
-<li>找到dns: 那一段往下一直复制到底然后粘贴到上面配置文件中</li>
-<li>示例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> dns:</span><br><span class="line">    enable: true</span><br><span class="line">    listen: &#x27;127.0.0.1:35353&#x27;</span><br><span class="line">    default-nameserver: </span><br><span class="line">    enhanced-mode: fake-ip</span><br><span class="line">    fake-ip-range: </span><br><span class="line">    fake-ip-filter: </span><br><span class="line">    nameserver: </span><br><span class="line">    fallback:</span><br><span class="line">    fallback-filter: </span><br><span class="line">proxies:  </span><br><span class="line">等。。一直到文件结尾</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>8.开放防火墙端口</strong><br>服务器配置安全组 7890和7891将其放行</p>
-<p><strong>9.运行</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard</span><br></pre></td></tr></table></figure>
-<p>注：clash-linux-amd64-v1.11.12     是你的二进制文件名<br>注：&#x2F;mnt&#x2F;clash                     是文件夹路径<br>注：&#x2F;mnt&#x2F;clash&#x2F;config.yaml         是配置文件<br>注：&#x2F;mnt&#x2F;clash&#x2F;clash-dashboard     是静态资源路径</p>
-<p><strong>10.后台运行，上一步没问题再执行</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./clash-linux-amd64-v1.11.12 -d /mnt/clash -f /mnt/clash/config.yaml -ext-ui /mnt/clash/clash-dashboard &amp;</span><br></pre></td></tr></table></figure>
-<p>注：执行之后将会出现数字，就是成功</p>
-<p><strong>11.访问页面</strong><br>    浏览器运行<br>    服务器ip地址:7891&#x2F;ui   </p>
-<p><strong>12.配置环境，使代理生效</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=127.0.0.1:7890</span><br><span class="line">export http_proxys=127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p><strong>13.可以通过echo  $http_proxy来查看是否启用了临时代理</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $http_proxy</span><br></pre></td></tr></table></figure>
-<p>成功：127.0.0.1:7890 出现这一段地址<br>访问你的页面，查看日志是否正常</p>
-<p>1.测试代理是否正常</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --proxy http://127.0.0.1:7890 https://www.youtube.com/index</span><br></pre></td></tr></table></figure>
-<p>成功:将会出现一堆东西，如果失败那么就检查配置是否错误</p>
-<p><strong>14.查看运行日志</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f nohup.out</span><br></pre></td></tr></table></figure>
-<p>成功示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:29:03+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:30:55+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 自动选择&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider &quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;Start initial compatible provider 故障转移&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;HTTP proxy listening at: 127.0.0.1:7890&quot;</span><br><span class="line">time=&quot;2023-04-22T19:46:23+08:00&quot; level=info msg=&quot;RESTful API listening at: [::]:7891&quot;</span><br><span class="line">time=&quot;2023-04-22T19:57:38+08:00&quot; level=info msg=&quot;HTTP proxy listening at: [::]:7890&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>15.关闭运行</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep clash</span><br></pre></td></tr></table></figure>
-<p>会出现两串信息  找到最前面几个数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -9 找到的数字   </span><br></pre></td></tr></table></figure> 
+  <h4 id="1-创建Git仓库"><a href="#1-创建Git仓库" class="headerlink" title="1.创建Git仓库"></a>1.创建Git仓库</h4><p>这个仓库可以用来存放 撰写笔记时产生的各种示例图 存放在git仓库中 会生成一个独有的图片链接 便于通过URL连接到该图片(会有网络问题)<br>注：关键性图片我建议存放到对象储存中 速率嘎嘎快<br><img src="https://mj-1317880370.cos.ap-beijing.myqcloud.com/github%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93%E5%82%A8%E5%AD%98%E5%9B%BE%E7%89%87.png" alt="创建git仓库储存图片"></p>
+<h4 id="2-上传图像文件夹"><a href="#2-上传图像文件夹" class="headerlink" title="2.上传图像文件夹"></a>2.上传图像文件夹</h4><p>将图片上传到GitHub仓库中。你可以在仓库中创建一个文件夹，专门用于存储图片。<br><img src="https://mj-1317880370.cos.ap-beijing.myqcloud.com/github%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/%E5%88%9B%E5%BB%BA%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6%E5%A4%B9.png" alt="创建图片文件夹.png"><br>创建好文件夹后 鼠标右键打开 Git Branch 对文件夹进行pull操作<br><img src="https://mj-1317880370.cos.ap-beijing.myqcloud.com/github%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8Cpull%E6%93%8D%E4%BD%9C.png" alt="初始化和pull操作.png"><br><img src="https://mj-1317880370.cos.ap-beijing.myqcloud.com/github%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/%E5%90%88%E5%B9%B6%E5%88%B0master%E5%88%86%E6%94%AF.png" alt="合并到master分支.png"></p>
+<h4 id="3-在Markdown文件中插入图片"><a href="#3-在Markdown文件中插入图片" class="headerlink" title="3.在Markdown文件中插入图片"></a>3.在Markdown文件中插入图片</h4><p>在Markdown文件中插入图片。使用以下语法将图片插入到Markdown文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt Text](image_path)</span><br></pre></td></tr></table></figure>
+
+<p>其中，Alt Text是图片的替代文本，用于在无法显示图片时提供替代信息。image_path是图片在仓库中的路径。</p>
+<p>例如，如果你的图片位于仓库的images文件夹中，可以使用以下语法插入图片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt Text](images/image_filename.png)</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;注：我个人建议放在对象储存中 效率高 也就几块钱费用&#x3D;&#x3D;</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -214,7 +176,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://165.154.135.62:3000/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://165.154.135.62:3000/2023/09/09/Github%20%E4%B8%8A%E7%9A%84%20markdown%20%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E4%B8%8A%E4%BC%A0%E5%B9%B6%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%EF%BC%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -225,15 +187,11 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/09/09/Github%20%E4%B8%8A%E7%9A%84%20markdown%20%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E4%B8%8A%E4%BC%A0%E5%B9%B6%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%EF%BC%9F/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            (no title)
-          
-        </div>
-      </a>
     
+      <a href="/2023/09/08/%E5%9B%BD%E5%86%85linux%E9%83%A8%E7%BD%B2clash/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
     
   </nav>
 
